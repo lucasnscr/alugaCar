@@ -33,7 +33,7 @@ public class AdministradorDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	
+	Java
 	
 	public LocalDateTime getCadastro() {
 		return cadastro;
