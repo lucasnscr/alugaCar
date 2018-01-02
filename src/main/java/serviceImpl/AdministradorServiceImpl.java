@@ -1,13 +1,13 @@
 package serviceImpl;
 
-import main.java.dto.AdministradorDTO;
-import main.java.entity.Administrador;
-import main.java.enums.FlagAtivo;
+import dto.AdministradorDTO;
+import entity.Administrador;
+import enums.FlagAtivo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import main.java.repository.AdministradorRepository;
+import repository.AdministradorRepository;
 import service.AdministradorService;
 
 import java.time.LocalDateTime;
@@ -73,16 +73,7 @@ public class AdministradorServiceImpl implements AdministradorService {
     }
 
     @Override
-    public AdministradorDTO findByIdAtivo(Long id){
-        AdministradorDTO administradorDTO = null;
-        try{
-            Administrador administrador = administradorRepository.findByIdAndAtivo(id, FlagAtivo.ATIVO);
-            if(administrador != null){
-                BeanUtils.copyProperties(administrador, administradorDTO);
-            }
-        }catch (Exception e){
-            e.getMessage();
-        }
-        return administradorDTO;
+    public AdministradorDTO findByIdAtivo(Long id) {
+        return null;
     }
 }

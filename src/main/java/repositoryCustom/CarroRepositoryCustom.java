@@ -1,7 +1,7 @@
-package main.java.repositoryCustom;
+package repositoryCustom;
 
-import main.java.dto.PesquisaCarroDTO;
-import main.java.entity.Carro;
+import dto.PesquisaCarroDTO;
+import entity.Carro;
 
 import java.time.LocalDate;
 import java.util.List;

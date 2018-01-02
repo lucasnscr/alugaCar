@@ -1,5 +1,4 @@
-package main.java.entity;
-
+package entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import main.java.enums.FlagAtivo;
+import enums.FlagAtivo;
 
 import java.time.LocalDateTime;
 
@@ -27,22 +26,6 @@ public class Cliente {
 	private FlagAtivo ativo;
 
 	private LocalDateTime atualizacao;
-	
-	public FlagAtivo getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(FlagAtivo ativo) {
-		this.ativo = ativo;
-	}
-
-	public LocalDateTime getAtualizacao() {
-		return atualizacao;
-	}
-
-	public void setAtualizacao(LocalDateTime atualizacao) {
-		this.atualizacao = atualizacao;
-	}
 
 	public long getId() {
 		return id;
@@ -67,7 +50,20 @@ public class Cliente {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 
+	public FlagAtivo getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(FlagAtivo ativo) {
+		this.ativo = ativo;
+	}
+
+	public LocalDateTime getAtualizacao() {
+		return atualizacao;
+	}
+
+	public void setAtualizacao(LocalDateTime atualizacao) {
+		this.atualizacao = atualizacao;
+	}
 }

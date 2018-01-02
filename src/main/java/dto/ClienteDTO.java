@@ -1,6 +1,6 @@
-package main.java.dto;
+package dto;
 
-import main.java.enums.FlagAtivo;
+import enums.FlagAtivo;
 import java.time.LocalDateTime;
 
 public class ClienteDTO {

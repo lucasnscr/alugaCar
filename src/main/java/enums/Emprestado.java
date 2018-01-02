@@ -1,4 +1,4 @@
-package main.java.enums;
+package enums;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

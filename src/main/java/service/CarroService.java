@@ -2,7 +2,8 @@ package service;
 
 import java.util.List;
 
-import main.java.dto.CarroDTO;
+import dto.CarroDTO;
+import dto.PesquisaCarroDTO;
 
 public interface CarroService {
 	
@@ -12,7 +13,7 @@ public interface CarroService {
 
 	CarroDTO inativar(Long id);
 	
-	List<CarroDTO> pesquisaCarro(main.java.dto.PesquisaCarroDTO pesquisaCarroDTO);
+	List<CarroDTO> pesquisaCarro(PesquisaCarroDTO pesquisaCarroDTO);
 
     CarroDTO pesquisaCarroId(Long id);
 	

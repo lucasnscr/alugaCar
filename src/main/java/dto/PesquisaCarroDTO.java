@@ -1,7 +1,7 @@
-package main.java.dto;
+package dto;
 
-import main.java.enums.Emprestado;
-import main.java.enums.Prioridade;
+import enums.Emprestado;
+import enums.Prioridade;
 
 import java.io.Serializable;
 
@@ -73,7 +73,7 @@ public class PesquisaCarroDTO implements Serializable {
         this.lugares = lugares;
     }
 
-    public Emprestado getEmprestado() {
+    public Object getEmprestado() {
         return emprestado;
     }
 
@@ -81,7 +81,7 @@ public class PesquisaCarroDTO implements Serializable {
         this.emprestado = emprestado;
     }
 
-    public Prioridade getPrioridade() {
+    public Object getPrioridade() {
         return prioridade;
     }
 

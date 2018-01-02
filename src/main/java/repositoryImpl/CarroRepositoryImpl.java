@@ -1,9 +1,9 @@
-package main.java.repositoryImpl;
+package repositoryImpl;
 
-import main.java.dto.PesquisaCarroDTO;
-import main.java.entity.Carro;
+import dto.PesquisaCarroDTO;
+import entity.Carro;
 import org.springframework.beans.factory.annotation.Autowired;
-import main.java.repositoryCustom.CarroRepositoryCustom;
+import repositoryCustom.CarroRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 /**
  * @author Lucas Nascimento

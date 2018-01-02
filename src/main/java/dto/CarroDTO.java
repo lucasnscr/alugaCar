@@ -1,6 +1,7 @@
-package main.java.dto;
+package dto;
 
-import main.java.enums.FlagAtivo;
+import enums.FlagAtivo;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 

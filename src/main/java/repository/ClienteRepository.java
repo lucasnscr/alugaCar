@@ -1,12 +1,11 @@
-package main.java.repository;
+package repository;
 
 import java.util.List;
 import java.util.Optional;
 
+import entity.Cliente;
+import enums.FlagAtivo;
 import org.springframework.data.repository.CrudRepository;
-
-import main.java.entity.Cliente;
-import main.java.enums.FlagAtivo;
 
 public interface ClienteRepository extends CrudRepository<Cliente, Long>{
 

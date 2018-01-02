@@ -1,7 +1,7 @@
-package main.java.repository;
+package repository;
 
-import main.java.entity.Administrador;
-import main.java.enums.FlagAtivo;
+import entity.Administrador;
+import enums.FlagAtivo;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

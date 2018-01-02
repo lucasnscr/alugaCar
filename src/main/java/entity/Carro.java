@@ -1,7 +1,7 @@
-package main.java.entity;
+package entity;
 
-import main.java.enums.Emprestado;
-import main.java.enums.FlagAtivo;
+import enums.Emprestado;
+import enums.FlagAtivo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

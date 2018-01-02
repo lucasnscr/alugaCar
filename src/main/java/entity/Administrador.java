@@ -1,4 +1,4 @@
-package main.java.entity;
+package entity;
 
 import java.time.LocalDateTime;
 
@@ -7,12 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.NotNull;
 
+import enums.FlagAtivo;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import main.java.enums.FlagAtivo;
 
-@NoArgsConstructor
 @Setter
 @Getter
 @Entity

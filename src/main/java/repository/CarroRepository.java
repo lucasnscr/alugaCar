@@ -1,8 +1,8 @@
-package main.java.repository;
+package repository;
 
-import main.java.entity.Carro;
+import entity.Carro;
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.java.repositoryCustom.CarroRepositoryCustom;
+import repositoryCustom.CarroRepositoryCustom;
 
 import java.util.List;
 

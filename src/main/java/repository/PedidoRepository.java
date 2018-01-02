@@ -1,9 +1,7 @@
-package main.java.repository;
+package repository;
 
-
+import entity.Pedido;
 import org.springframework.data.repository.CrudRepository;
-
-import main.java.entity.Pedido;
 
 public interface PedidoRepository extends CrudRepository<Pedido, Long> {
 

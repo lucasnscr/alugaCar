@@ -1,9 +1,8 @@
-package main.java.dto;
-
+package dto;
 
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import main.java.enums.Prioridade;;
+import enums.Prioridade;
 
 public class PedidoDTO {
 

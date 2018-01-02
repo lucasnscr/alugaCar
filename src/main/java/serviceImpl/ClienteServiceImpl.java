@@ -1,16 +1,16 @@
 package serviceImpl;
 
-import main.java.enums.FlagAtivo;
+import dto.ClienteDTO;
+import entity.Cliente;
+import enums.FlagAtivo;
 import org.springframework.stereotype.Service;
-import main.java.repository.ClienteRepository;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 
-import main.java.dto.ClienteDTO;
-import main.java.entity.Cliente;
+import repository.ClienteRepository;
 import service.ClienteService;
 
 import java.time.LocalDateTime;

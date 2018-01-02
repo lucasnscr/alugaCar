@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import dto.ClienteDTO;
 import main.java.dto.ClienteDTO;
 
 public interface ClienteService {

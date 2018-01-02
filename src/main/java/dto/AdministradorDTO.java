@@ -1,53 +1,52 @@
-package main.java.dto;
+package dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import main.java.enums.FlagAtivo;
+import enums.FlagAtivo;
 
 public class AdministradorDTO implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Long id;
-	
-	private String nome;
-	
-	private LocalDateTime cadastro;
-	
-	private FlagAtivo ativo;
-	
-	public Long getId() {
-		return id;
-	}
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String nome;
 
-	public String getNome() {
-		return nome;
-	}
+    private LocalDateTime cadastro;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    private FlagAtivo ativo;
 
-	Java
-	
-	public LocalDateTime getCadastro() {
-		return cadastro;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setCadastro(LocalDateTime cadastro) {
-		this.cadastro = cadastro;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public FlagAtivo getAtivo() {
-		return ativo;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setAtivo(FlagAtivo ativo) {
-		this.ativo = ativo;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+    public LocalDateTime getCadastro() {
+        return cadastro;
+    }
+
+    public void setCadastro(LocalDateTime cadastro) {
+        this.cadastro = cadastro;
+    }
+
+    public FlagAtivo getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(FlagAtivo ativo) {
+        this.ativo = ativo;
+    }
 }

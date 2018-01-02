@@ -1,14 +1,14 @@
 package serviceImpl;
 
-import main.java.dto.CarroDTO;
-import main.java.dto.PesquisaCarroDTO;
-import main.java.entity.Carro;
-import main.java.enums.FlagAtivo;
+import dto.CarroDTO;
+import dto.PesquisaCarroDTO;
+import entity.Carro;
+import enums.FlagAtivo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import main.java.repository.CarroRepository;
+import repository.CarroRepository;
 import service.CarroService;
 
 import java.util.ArrayList;
