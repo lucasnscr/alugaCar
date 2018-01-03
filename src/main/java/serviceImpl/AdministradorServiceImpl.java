@@ -3,6 +3,8 @@ package serviceImpl;
 import dto.AdministradorDTO;
 import entity.Administrador;
 import enums.FlagAtivo;
+import exceptions.ServicoException;
+import exceptions.ValidacaoException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ public class AdministradorServiceImpl implements AdministradorService {
     private AdministradorRepository administradorRepository;
 
     @Override
-    public AdministradorDTO insert(AdministradorDTO administradorDTO){
+    public AdministradorDTO insert(AdministradorDTO administradorDTO) throws ValidacaoException, ServicoException{
         try{
             Administrador administrador =  null;
             if(administradorDTO.getNome() != null){
@@ -31,13 +33,13 @@ public class AdministradorServiceImpl implements AdministradorService {
                 administradorRepository.save(administrador);
             }
         }catch (Exception e){
-            e.getMessage();
+            throw  new ServicoException(e.getMessage());
         }
         return administradorDTO;
     }
 
     @Override
-    public AdministradorDTO inativar(AdministradorDTO administradorDTO){
+    public AdministradorDTO inativar(AdministradorDTO administradorDTO) {
         AdministradorDTO admDTORetorno =  null;
         try {
             Administrador administrador = administradorRepository.findById(administradorDTO.getId());
