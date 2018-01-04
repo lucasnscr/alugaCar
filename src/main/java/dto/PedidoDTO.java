@@ -3,23 +3,31 @@ package dto;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import enums.Prioridade;
+import enums.TipoCarro;
+
+import javax.validation.constraints.NotNull;
 
 public class PedidoDTO {
 
 	public PedidoDTO() {}
 
 	private Long id;
-	
-	private Long idCliente;
 
+	@NotNull
+	private ClienteDTO clienteDTO;
+
+	@NotNull
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataInicioEmprestimo;
-	
+
+	@NotNull
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataFimEmprestimo;
 
-	private Long idCarro;
-	
+	@NotNull
+	private CarroDTO carroDTO;
+
+	@NotNull
 	private Prioridade prioridade;
 
 	public Long getId() {
@@ -30,12 +38,12 @@ public class PedidoDTO {
 		this.id = id;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public ClienteDTO getClienteDTO() {
+		return clienteDTO;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setClienteDTO(ClienteDTO clienteDTO) {
+		this.clienteDTO = clienteDTO;
 	}
 
 	public LocalDate getDataInicioEmprestimo() {
@@ -54,14 +62,14 @@ public class PedidoDTO {
 		this.dataFimEmprestimo = dataFimEmprestimo;
 	}
 
-	public Long getIdCarro() {
-		return idCarro;
+	public CarroDTO getCarroDTO() {
+		return carroDTO;
 	}
 
-	public void setIdCarro(Long idCarro) {
-		this.idCarro = idCarro;
+	public void setCarroDTO(CarroDTO carroDTO) {
+		this.carroDTO = carroDTO;
 	}
-	
+
 	public Prioridade getPrioridade() {
 		return prioridade;
 	}
@@ -69,5 +77,4 @@ public class PedidoDTO {
 	public void setPrioridade(Prioridade prioridade) {
 		this.prioridade = prioridade;
 	}
-	
 }

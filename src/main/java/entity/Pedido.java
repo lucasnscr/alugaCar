@@ -9,7 +9,12 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import enums.FlagAtivo;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 public class Pedido {
 
@@ -31,44 +36,11 @@ public class Pedido {
 	@NotNull
 	private Long idCarro;
 
-	public Long getId() {
-		return id;
-	}
+	@NotNull
+	private FlagAtivo ativo;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private Long idPedidoAtualizado;
 
-	public Long getIdCliente() {
-		return idCliente;
-	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public LocalDate getDataInicioEmprestimo() {
-		return dataInicioEmprestimo;
-	}
-
-	public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
-		this.dataInicioEmprestimo = dataInicioEmprestimo;
-	}
-
-	public LocalDate getDataFimEmprestimo() {
-		return dataFimEmprestimo;
-	}
-
-	public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
-		this.dataFimEmprestimo = dataFimEmprestimo;
-	}
-
-	public Long getIdCarro() {
-		return idCarro;
-	}
-
-	public void setIdCarro(Long idCarro) {
-		this.idCarro = idCarro;
-	}
 
 }

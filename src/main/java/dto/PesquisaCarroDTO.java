@@ -2,8 +2,10 @@ package dto;
 
 import enums.Emprestado;
 import enums.Prioridade;
+import enums.TipoCarro;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class PesquisaCarroDTO implements Serializable {
 
@@ -24,6 +26,12 @@ public class PesquisaCarroDTO implements Serializable {
     private Emprestado emprestado;
 
     private Prioridade prioridade;
+
+    private TipoCarro tipoCarro;
+
+    private BigDecimal valorInicial;
+
+    private BigDecimal valorFinal;
 
     public String getMarca() {
         return marca;
@@ -73,7 +81,7 @@ public class PesquisaCarroDTO implements Serializable {
         this.lugares = lugares;
     }
 
-    public Object getEmprestado() {
+    public Emprestado getEmprestado() {
         return emprestado;
     }
 
@@ -81,11 +89,35 @@ public class PesquisaCarroDTO implements Serializable {
         this.emprestado = emprestado;
     }
 
-    public Object getPrioridade() {
+    public Prioridade getPrioridade() {
         return prioridade;
     }
 
     public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
+    }
+
+    public TipoCarro getTipoCarro() {
+        return tipoCarro;
+    }
+
+    public void setTipoCarro(TipoCarro tipoCarro) {
+        this.tipoCarro = tipoCarro;
+    }
+
+    public BigDecimal getValorInicial() {
+        return valorInicial;
+    }
+
+    public void setValorInicial(BigDecimal valorInicial) {
+        this.valorInicial = valorInicial;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
     }
 }

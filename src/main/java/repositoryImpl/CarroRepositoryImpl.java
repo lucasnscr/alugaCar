@@ -2,12 +2,14 @@ package repositoryImpl;
 
 import dto.PesquisaCarroDTO;
 import entity.Carro;
+import exceptions.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import repositoryCustom.CarroRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -65,7 +67,7 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
 
 	@SuppressWarnings({ "unused", "unchecked" })
 	@Override
-    public List<Carro> pesquisaCarro(PesquisaCarroDTO pesquisaCarroDTO) {
+    public List<Carro> pesquisaCarro(PesquisaCarroDTO pesquisaCarroDTO) throws ValidacaoException {
 
         StringBuilder sql = new StringBuilder();
         int cont = 0;
@@ -80,34 +82,68 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
         }
 
         if(pesquisaCarroDTO.getAno() != null){
-            sql.append(" ANO = ?");
+            sql.append(" AND")
+               .append(" ANO = ?");
             parametros.put(cont++, pesquisaCarroDTO.getAno());
         }
 
         if(pesquisaCarroDTO.getKilometragemInicial() != null && pesquisaCarroDTO.getKilometragemFinal() != null){
-            sql.append(" KILOMETRAGEM BETWEEN ? AND ? ");
+            sql.append(" AND")
+               .append(" KILOMETRAGEM BETWEEN ? AND ? ");
             parametros.put(cont++, pesquisaCarroDTO.getKilometragemInicial());
             parametros.put(cont++, pesquisaCarroDTO.getKilometragemFinal());
         }
 
         if(!pesquisaCarroDTO.getMotorizacao().equals(null)){
-            sql.append(" MOTORIZACAO = ?");
+            sql.append(" AND")
+               .append(" MOTORIZACAO = ? ");
             parametros.put(cont++, pesquisaCarroDTO.getMotorizacao());
         }
 
         if(pesquisaCarroDTO.getLugares() != null){
-            sql.append(" LUGARES = ?");
+            sql.append(" AND")
+               .append(" LUGARES = ? ");
             parametros.put(cont++, pesquisaCarroDTO.getLugares());
         }
 
         if(!pesquisaCarroDTO.getEmprestado().equals(null)){
-            sql.append(" EMPRESTADO = ?");
+            sql.append(" AND")
+               .append(" EMPRESTADO = ? ");
             parametros.put(cont++, pesquisaCarroDTO.getEmprestado());
         }
 
         if(!pesquisaCarroDTO.getPrioridade().equals(null)){
-            sql.append(" PRIORIDADE = ?");
+            sql.append(" AND")
+               .append(" PRIORIDADE = ? ");
             parametros.put(cont++, pesquisaCarroDTO.getPrioridade());
+        }
+
+        if(!pesquisaCarroDTO.getTipoCarro().equals(null)){
+            sql.append(" AND")
+               .append(" TIPO_CARRO = ? ");
+            parametros.put(cont++, pesquisaCarroDTO.getTipoCarro());
+        }
+
+        if (pesquisaCarroDTO.getKilometragemFinal() < pesquisaCarroDTO.getKilometragemInicial()){
+            throw new ValidacaoException("Kilometragem informada inválida");
+        }
+
+        if(pesquisaCarroDTO.getValorInicial() != null && pesquisaCarroDTO.getValorFinal() != null){
+            sql.append(" AND")
+               .append(" VALOR BETWEEN ? AND ? ");
+            parametros.put(cont++, pesquisaCarroDTO.getValorInicial());
+            parametros.put(cont++, pesquisaCarroDTO.getValorFinal());
+        }else if (pesquisaCarroDTO.getValorInicial() != null && pesquisaCarroDTO.getValorFinal() == null){
+            BigDecimal valor = new BigDecimal(0);
+            sql.append(" AND")
+                    .append(" VALOR >= ? ");
+            parametros.put(cont++, pesquisaCarroDTO.getValorInicial());
+            parametros.put(cont++, valor);
+        }else if (pesquisaCarroDTO.getValorInicial() == null && pesquisaCarroDTO.getValorFinal() != null) {
+            BigDecimal valor = new BigDecimal(0);
+            sql.append(" AND")
+                    .append(" VALOR <=  ? ");
+            parametros.put(cont++, pesquisaCarroDTO.getValorFinal());
         }
 
         Query query = entityManager.createNativeQuery(sql.toString());

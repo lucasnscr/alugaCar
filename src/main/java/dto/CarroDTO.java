@@ -1,8 +1,12 @@
 package dto;
 
+import enums.Emprestado;
 import enums.FlagAtivo;
+import enums.TipoCarro;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CarroDTO implements Serializable {
@@ -15,19 +19,26 @@ public class CarroDTO implements Serializable {
 
 	private Long idPedido;
 
-	private LocalDate dataInicioEmprestimo;
-
-	private LocalDate dataFimEmprestimo;
-
+	@NotNull
 	private String placa;
 
-	private String tipo;
+	@NotNull
+	private TipoCarro tipoCarro;
 
+	@NotNull
 	private Long kilometragem;
 
+	@NotNull
 	private Long kilometragemFinal;
 
+	@NotNull
 	private FlagAtivo ativo;
+
+	@NotNull
+	private Emprestado emprestado;
+
+	@NotNull
+	private BigDecimal valor;
 
 	public Long getId() {
 		return id;
@@ -53,22 +64,6 @@ public class CarroDTO implements Serializable {
 		this.idPedido = idPedido;
 	}
 
-	public LocalDate getDataInicioEmprestimo() {
-		return dataInicioEmprestimo;
-	}
-
-	public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
-		this.dataInicioEmprestimo = dataInicioEmprestimo;
-	}
-
-	public LocalDate getDataFimEmprestimo() {
-		return dataFimEmprestimo;
-	}
-
-	public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
-		this.dataFimEmprestimo = dataFimEmprestimo;
-	}
-
 	public String getPlaca() {
 		return placa;
 	}
@@ -77,12 +72,12 @@ public class CarroDTO implements Serializable {
 		this.placa = placa;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public TipoCarro getTipoCarro() {
+		return tipoCarro;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoCarro(TipoCarro tipoCarro) {
+		this.tipoCarro = tipoCarro;
 	}
 
 	public Long getKilometragem() {
@@ -107,5 +102,21 @@ public class CarroDTO implements Serializable {
 
 	public void setAtivo(FlagAtivo ativo) {
 		this.ativo = ativo;
+	}
+
+	public Emprestado getEmprestado() {
+		return emprestado;
+	}
+
+	public void setEmprestado(Emprestado emprestado) {
+		this.emprestado = emprestado;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 }

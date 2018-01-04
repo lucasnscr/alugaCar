@@ -2,6 +2,7 @@ package entity;
 
 import enums.Emprestado;
 import enums.FlagAtivo;
+import enums.TipoCarro;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -34,7 +36,7 @@ public class Carro {
     private String placa;
 
     @NotNull
-    private String tipo;
+    private Integer tipoCarro;
 
     @NotNull
     private Long kilometragem;
@@ -53,7 +55,10 @@ public class Carro {
     private FlagAtivo ativo;
 
     @NotNull
-    private Emprestado emprestado;
+    private Integer emprestado;
+
+    @NotNull
+    private BigDecimal valor;
 
 	public Long getId() {
 		return id;
@@ -103,12 +108,12 @@ public class Carro {
 		this.placa = placa;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Integer getTipoCarro() {
+		return tipoCarro;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoCarro(Integer tipoCarro) {
+		this.tipoCarro = tipoCarro;
 	}
 
 	public Long getKilometragem() {
@@ -151,14 +156,19 @@ public class Carro {
 		this.ativo = ativo;
 	}
 
-	public Emprestado getEmprestado() {
+	public Integer getEmprestado() {
 		return emprestado;
 	}
 
-	public void setEmprestado(Emprestado emprestado) {
+	public void setEmprestado(Integer emprestado) {
 		this.emprestado = emprestado;
 	}
-    
-    
 
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
 }
