@@ -5,9 +5,7 @@ import java.time.LocalDate;
 
 public class PesquisaPedidoDTO implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
-	private Long idPedido;
+    private Long idPedido;
 
     private Long idCliente;
 

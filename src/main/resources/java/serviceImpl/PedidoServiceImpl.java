@@ -38,7 +38,7 @@ public class PedidoServiceImpl implements PedidoService {
             }
             CarroDTO carroDTO = pedidoDTO.getCarroDTO();
             disponibilidade = carroDisponivel(carroDTO.getId(), pedidoDTO.getDataInicioEmprestimo(), pedidoDTO.getDataFimEmprestimo());
-            if(disponibilidade ==  true){
+            if(pedido != null && disponibilidade ==  true){
                 pedido = pedidoRepository.save(pedido);
                 BeanUtils.copyProperties(pedido, pedidoDTO);
             }

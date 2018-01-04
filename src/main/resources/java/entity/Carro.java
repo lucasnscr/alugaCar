@@ -1,6 +1,8 @@
 package entity;
 
+import enums.Emprestado;
 import enums.FlagAtivo;
+import enums.TipoCarro;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

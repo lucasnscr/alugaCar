@@ -1,6 +1,7 @@
 package resource;
 
 import dto.AdministradorDTO;
+import entity.Administrador;
 import exceptions.ServicoException;
 import exceptions.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;

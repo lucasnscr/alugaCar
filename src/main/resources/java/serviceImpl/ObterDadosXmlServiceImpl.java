@@ -38,6 +38,7 @@ public class ObterDadosXmlServiceImpl {
     }
 
     public Element obterElement(String elementTag, Element element){
+        Element element1 = null;
         IIOMetadataNode fromElement =  new IIOMetadataNode();
         NodeList nodeList = fromElement.getElementsByTagName(elementTag);
         if(nodeList.getLength() > 0){

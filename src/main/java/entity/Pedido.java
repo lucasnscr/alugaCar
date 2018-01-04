@@ -10,11 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import enums.FlagAtivo;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
 @Entity
 public class Pedido {
 
@@ -41,6 +37,63 @@ public class Pedido {
 
 	private Long idPedidoAtualizado;
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public LocalDate getDataInicioEmprestimo() {
+		return dataInicioEmprestimo;
+	}
+
+	public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
+		this.dataInicioEmprestimo = dataInicioEmprestimo;
+	}
+
+	public LocalDate getDataFimEmprestimo() {
+		return dataFimEmprestimo;
+	}
+
+	public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
+		this.dataFimEmprestimo = dataFimEmprestimo;
+	}
+
+	public Long getIdCarro() {
+		return idCarro;
+	}
+
+	public void setIdCarro(Long idCarro) {
+		this.idCarro = idCarro;
+	}
+
+	public FlagAtivo getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(FlagAtivo ativo) {
+		this.ativo = ativo;
+	}
+
+	public Long getIdPedidoAtualizado() {
+		return idPedidoAtualizado;
+	}
+
+	public void setIdPedidoAtualizado(Long idPedidoAtualizado) {
+		this.idPedidoAtualizado = idPedidoAtualizado;
+	}
+
+
+	
 
 }
