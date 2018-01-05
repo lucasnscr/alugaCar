@@ -1,0 +1,128 @@
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+
+    <title>AngularJS $http Rest example</title>
+    <script type="text/javascript">
+            var app = angular.module("PedidoManagement", []);
+
+            //Controller Part
+            app.controller("PedidoController", function($scope, $http) {
+
+
+                $scope.pedido = [];
+                $scope.pedidoForm = {
+                    idPedido : "",
+                    valor : ""
+                };
+
+                _refreshPedidoData();
+
+                $scope.submitPedido = function() {
+
+                    var method = "";
+                    var url = "";
+                    if ($scope.pedidoForm.id == -1) {
+                        method = "POST";
+                        url = '/alugaCar/pedido';
+                    } else {
+                        //Id is present in form data, it is edit Pedido operation
+                        method = "PUT";
+                        url = '/alugaCar/pedido';
+                    }
+
+                    $http({
+                        method : method,
+                        url : url,
+                        data : angular.toJson($scope.pedidoForm),
+                        headers : {
+                            'Content-Type' : 'application/json'
+                        }
+                    }).then( _success, _error );
+                };
+
+
+                $scope.deletePedido = function(Pedido) {
+                    $http({
+                        method : 'GET',
+                        url : '/alugaCar/Pedido/' + Pedido.id
+                    }).then(_success, _error);
+                };
+
+                $scope.editPedido = function(Pedido) {
+
+                    $scope.pedidoForm.idPedido = Pedido.idPedido;
+                    $scope.pedidoForm.valor = Pedido.valor;
+                };
+
+                function _refreshPedidoData() {
+                    $http({
+                        method : 'GET',
+                        url : 'http://localhost:8080/alugaCar/pedido'
+                    }).then(function successCallback(response) {
+                        $scope.pedido = response.data;
+                    }, function errorCallback(response) {
+                        console.log(response.statusText);
+                    });
+                }
+
+                function _success(response) {
+                    _refreshPedidoData();
+                    _clearFormData()
+                }
+
+                function _error(response) {
+                    console.log(response.statusText);
+                }
+
+                function _clearFormData() {
+                    $scope.pedidoForm.idPedido = "";
+                    $scope.pedidoForm.valor = "";
+
+                };
+            });
+        </script>
+    <head>
+<body ng-app="PedidoManagement" ng-controller="PedidoController">
+<h1>
+    AngularJS Restful web services example using $http
+</h1>
+<form ng-submit="submitPedido()">
+    <table>
+
+        <tr>
+            <th colspan="2">Add/Edit Pedido</th>
+        </tr>
+        <tr>
+            <td>Pedido</td>
+            <td><input type="text" ng-model="pedidoForm.idPedido" /></td>
+        </tr>
+        <tr>
+            <td>valor</td>
+            <td><input type="text" ng-model="pedidoForm.valor"  /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit" class="blue-button" /></td>
+        </tr>
+    </table>
+</form>
+<table>
+    <tr>
+
+        <th>idPedido</th>
+        <th>valor</th>
+
+    </tr>
+
+    <tr ng-repeat="Pedido in pedido">
+
+        <td> {{ Pedido.idPedido }}</td>
+        <td >{{ Pedido.valor }}</td>
+
+        <td><a ng-click="editPedido(Pedido)" class="blue-button">Edit</a> | <a ng-click="deletePedido(Pedido)" class="red-button">Delete</a></td>
+    </tr>
+
+</table>
+</body>
+</html>
