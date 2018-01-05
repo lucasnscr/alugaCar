@@ -36,14 +36,12 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public PedidoDTO insert(PedidoDTO pedidoDTO) throws ValidacaoException, ServicoException {
         Pedido pedido =  null;
-        Boolean disponibilidade = false;
-
         try{
             if(pedidoDTO != null){
                 BeanUtils.copyProperties(pedidoDTO, pedido);
             }
-            disponibilidade = carroDisponivel(pedidoDTO.getIdCarro(), pedidoDTO.getDataInicioEmprestimo(), pedidoDTO.getDataFimEmprestimo());
-            if(disponibilidade ==  true){
+            Boolean carroDisponivel = carroDisponivel(pedidoDTO.getIdCarro(), pedidoDTO.getDataInicioEmprestimo(), pedidoDTO.getDataFimEmprestimo());
+            if(carroDisponivel){
                 pedido = pedidoRepository.save(pedido);
                 BeanUtils.copyProperties(pedido, pedidoDTO);
             }
