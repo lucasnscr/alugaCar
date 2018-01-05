@@ -1,19 +1,27 @@
 package dto;
 
-import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotNull;
 
-public class PedidoDTO {
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class PedidoDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public PedidoDTO() {}
 
 	private Long id;
 
 	@NotNull
-	private ClienteDTO clienteDTO;
+	private Long idCliente;
 
+	
+	@NotNull
+	private Long  idCarro;
+	
 	@NotNull
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataInicioEmprestimo;
@@ -21,9 +29,6 @@ public class PedidoDTO {
 	@NotNull
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataFimEmprestimo;
-
-	@NotNull
-	private CarroDTO carroDTO;
 
 	public Long getId() {
 		return id;
@@ -33,12 +38,20 @@ public class PedidoDTO {
 		this.id = id;
 	}
 
-	public ClienteDTO getClienteDTO() {
-		return clienteDTO;
+	public Long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setClienteDTO(ClienteDTO clienteDTO) {
-		this.clienteDTO = clienteDTO;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public Long getIdCarro() {
+		return idCarro;
+	}
+
+	public void setIdCarro(Long idCarro) {
+		this.idCarro = idCarro;
 	}
 
 	public LocalDate getDataInicioEmprestimo() {
@@ -57,11 +70,11 @@ public class PedidoDTO {
 		this.dataFimEmprestimo = dataFimEmprestimo;
 	}
 
-	public CarroDTO getCarroDTO() {
-		return carroDTO;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setCarroDTO(CarroDTO carroDTO) {
-		this.carroDTO = carroDTO;
-	}
+	
+	
+
 }

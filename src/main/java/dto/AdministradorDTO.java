@@ -1,9 +1,9 @@
 package dto;
 
+import enums.FlagAtivo;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
-import enums.FlagAtivo;
 
 public class AdministradorDTO implements Serializable {
 

@@ -1,20 +1,17 @@
 package repositoryImpl;
 
+import MensagensErro.MensagemErro;
 import dto.PesquisaPedidoDTO;
 import entity.Carro;
 import entity.Pedido;
 import enums.FlagAtivo;
 import exceptions.ValidacaoException;
-import repository.CarroRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-import MensagensErro.MensagemErro;
+import repository.CarroRepository;
 import repositoryCustom.PedidoRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +72,7 @@ public class PedidoRepositoryImpl implements PedidoRepositoryCustom {
         			parametros.put(cont++, pesquisaPedidoDTO.getDataInicioEmprestimo());
         			parametros.put(cont++, pesquisaPedidoDTO.getDataInicioEmprestimo());
         		}else {
-        			throw new ValidacaoException(MensagemErro.ERRO_DATA_EMPRESTIMO);
+        			throw new ValidacaoException(MensagemErro.ERRO_DATA_PEDIDO);
         		}
         	}else if(pesquisaPedidoDTO.getDataInicioEmprestimo() != null && pesquisaPedidoDTO.getDataFimEmprestimo() == null) {
         		sql.append(" AND ")

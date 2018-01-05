@@ -2,7 +2,6 @@ package repository;
 
 import entity.Carro;
 import enums.FlagAtivo;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import repositoryCustom.CarroRepositoryCustom;
 

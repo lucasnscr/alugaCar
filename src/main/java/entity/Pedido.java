@@ -1,14 +1,13 @@
 package entity;
 
-import java.time.LocalDate;
+import enums.FlagAtivo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-
-import enums.FlagAtivo;
+import java.time.LocalDate;
 
 @Entity
 public class Pedido {

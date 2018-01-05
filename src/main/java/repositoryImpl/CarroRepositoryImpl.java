@@ -3,7 +3,6 @@ package repositoryImpl;
 import dto.PesquisaCarroDTO;
 import entity.Carro;
 import exceptions.ValidacaoException;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import repositoryCustom.CarroRepositoryCustom;
@@ -141,7 +140,7 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
             parametros.put(cont++, pesquisaCarroDTO.getValorFinal());
         }
 
-        Query query = entityManager.createNativeQuery(sql.toString());
+        Query query = entityManager.createQuery(sql.toString());
         for (int i =0; i <= parametros.size(); i++){
             query.setParameter(i, parametros.get(i));
         }

@@ -1,15 +1,14 @@
 package entity;
 
-import java.time.LocalDateTime;
+import enums.FlagAtivo;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.NotNull;
-
-import enums.FlagAtivo;
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter

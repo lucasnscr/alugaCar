@@ -9,6 +9,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import MensagensErro.MensagemErro;
 import repository.AdministradorRepository;
 import service.AdministradorService;
 
@@ -33,13 +35,13 @@ public class AdministradorServiceImpl implements AdministradorService {
                 administradorRepository.save(administrador);
             }
         }catch (Exception e){
-            throw  new ServicoException(e.getMessage());
+            throw  new ServicoException(MensagemErro.ERRO_INSERIR_ADM);
         }
         return administradorDTO;
     }
 
     @Override
-    public AdministradorDTO inativar(AdministradorDTO administradorDTO) {
+    public AdministradorDTO inativar(AdministradorDTO administradorDTO) throws ValidacaoException, ServicoException {
         AdministradorDTO admDTORetorno =  null;
         try {
             Administrador administrador = administradorRepository.findById(administradorDTO.getId());
@@ -50,14 +52,14 @@ public class AdministradorServiceImpl implements AdministradorService {
                 BeanUtils.copyProperties(administrador, admDTORetorno);
             }
         }catch(Exception e){
-            e.getMessage();
+            throw new ServicoException(MensagemErro.ERRO_INATIVAR_ADM);
         }
 
         return admDTORetorno;
     }
 
     @Override
-    public List<AdministradorDTO> findByAtivo(){
+    public List<AdministradorDTO> findByAtivo() throws ValidacaoException, ServicoException{
         List<AdministradorDTO>  administradoresDTO = new ArrayList<>();
         try{
             List<Administrador> administradores = administradorRepository.findByAtivo(FlagAtivo.ATIVO);
@@ -69,13 +71,22 @@ public class AdministradorServiceImpl implements AdministradorService {
                 }
             }
         }catch (Exception e){
-            e.getMessage();
+            throw new ValidacaoException(MensagemErro.ERRO_PESQUISAR_ADM);
         }
         return administradoresDTO;
     }
 
     @Override
-    public AdministradorDTO findByIdAtivo(Long id) {
-        return null;
+    public AdministradorDTO findByIdAtivo(Long id) throws ValidacaoException, ServicoException {
+    	AdministradorDTO administradorDTO = null;
+    	try {
+    		Administrador administrador = administradorRepository.findByIdAndAtivo(id, FlagAtivo.ATIVO);
+    		if(administrador != null) {
+    			BeanUtils.copyProperties(administrador, administradorDTO);
+    		}
+    	}catch (Exception e) {
+			throw new ValidacaoException(MensagemErro.ERRO_PESQUISAR_ADM);
+		}
+        return administradorDTO;
     }
 }
