@@ -3,58 +3,59 @@ package dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PesquisaPedidoDTO implements Serializable {
+public class PesquisaPedidoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Long idPedido;
+	private Long id;
 
     private Long idCliente;
 
-    private CarroDTO carroDTO;
+    private Long idCarro ;
 
     private LocalDate dataInicioEmprestimo;
 
     private LocalDate dataFimEmprestimo;
 
-    public Long getIdPedido() {
-        return idPedido;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setIdPedido(Long idPedido) {
-        this.idPedido = idPedido;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getIdCliente() {
-        return idCliente;
-    }
+	public Long getIdCliente() {
+		return idCliente;
+	}
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
 
-    public CarroDTO getCarroDTO() {
-        return carroDTO;
-    }
+	public Long getIdCarro() {
+		return idCarro;
+	}
 
-    public void setCarroDTO(CarroDTO carroDTO) {
-        this.carroDTO = carroDTO;
-    }
+	public void setIdCarro(Long idCarro) {
+		this.idCarro = idCarro;
+	}
 
-    public LocalDate getDataInicioEmprestimo() {
-        return dataInicioEmprestimo;
-    }
+	public LocalDate getDataInicioEmprestimo() {
+		return dataInicioEmprestimo;
+	}
 
-    public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
-        this.dataInicioEmprestimo = dataInicioEmprestimo;
-    }
+	public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
+		this.dataInicioEmprestimo = dataInicioEmprestimo;
+	}
 
-    public LocalDate getDataFimEmprestimo() {
-        return dataFimEmprestimo;
-    }
+	public LocalDate getDataFimEmprestimo() {
+		return dataFimEmprestimo;
+	}
 
-    public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
-        this.dataFimEmprestimo = dataFimEmprestimo;
-    }
+	public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
+		this.dataFimEmprestimo = dataFimEmprestimo;
+	}
+    
 
 }

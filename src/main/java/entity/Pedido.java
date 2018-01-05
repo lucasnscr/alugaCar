@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import enums.FlagAtivo;
 
 @Entity
@@ -22,16 +21,11 @@ public class Pedido {
 	private Long idCliente;
 
 	@NotNull
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private LocalDate dataInicioEmprestimo;
-	
-	@NotNull
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private LocalDate dataFimEmprestimo;
-
-	@NotNull
 	private Long idCarro;
 
+	@NotNull
+	private LocalDate dataEmprestimo;
+	
 	@NotNull
 	private FlagAtivo ativo;
 
@@ -53,28 +47,20 @@ public class Pedido {
 		this.idCliente = idCliente;
 	}
 
-	public LocalDate getDataInicioEmprestimo() {
-		return dataInicioEmprestimo;
-	}
-
-	public void setDataInicioEmprestimo(LocalDate dataInicioEmprestimo) {
-		this.dataInicioEmprestimo = dataInicioEmprestimo;
-	}
-
-	public LocalDate getDataFimEmprestimo() {
-		return dataFimEmprestimo;
-	}
-
-	public void setDataFimEmprestimo(LocalDate dataFimEmprestimo) {
-		this.dataFimEmprestimo = dataFimEmprestimo;
-	}
-
 	public Long getIdCarro() {
 		return idCarro;
 	}
 
 	public void setIdCarro(Long idCarro) {
 		this.idCarro = idCarro;
+	}
+
+	public LocalDate getDataEmprestimo() {
+		return dataEmprestimo;
+	}
+
+	public void setDataEmprestimo(LocalDate dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
 	}
 
 	public FlagAtivo getAtivo() {
@@ -92,8 +78,5 @@ public class Pedido {
 	public void setIdPedidoAtualizado(Long idPedidoAtualizado) {
 		this.idPedidoAtualizado = idPedidoAtualizado;
 	}
-
-
 	
-
 }

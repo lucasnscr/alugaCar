@@ -3,6 +3,8 @@ package repositoryImpl;
 import dto.PesquisaCarroDTO;
 import entity.Carro;
 import exceptions.ValidacaoException;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import repositoryCustom.CarroRepositoryCustom;
 
@@ -65,7 +67,7 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
         
     }
 
-	@SuppressWarnings({ "unused", "unchecked" })
+	@SuppressWarnings("unchecked")
 	@Override
     public List<Carro> pesquisaCarro(PesquisaCarroDTO pesquisaCarroDTO) throws ValidacaoException {
 
@@ -73,48 +75,48 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
         int cont = 0;
         Map<Integer, Object> parametros =  new HashMap<>();
 
-        sql.append(" SELECT * FROM" )
+        sql.append(" SELECT carro FROM Carro " )
                 .append(" WHERE ");
 
         if(pesquisaCarroDTO.getMarca() != null){
-            sql.append("  MARCA = ?");
+            sql.append("  marca = :marca ");
             parametros.put(cont++, pesquisaCarroDTO.getMarca());
         }
 
         if(pesquisaCarroDTO.getAno() != null){
-            sql.append(" AND")
-               .append(" ANO = ?");
+            sql.append(" AND ")
+               .append(" ano = :ano ");
             parametros.put(cont++, pesquisaCarroDTO.getAno());
         }
 
         if(pesquisaCarroDTO.getKilometragemInicial() != null && pesquisaCarroDTO.getKilometragemFinal() != null){
             sql.append(" AND")
-               .append(" KILOMETRAGEM BETWEEN ? AND ? ");
+               .append(" kilometragem BETWEEN :inicio AND :fim ");
             parametros.put(cont++, pesquisaCarroDTO.getKilometragemInicial());
             parametros.put(cont++, pesquisaCarroDTO.getKilometragemFinal());
         }
 
         if(!pesquisaCarroDTO.getMotorizacao().equals(null)){
             sql.append(" AND")
-               .append(" MOTORIZACAO = ? ");
+               .append(" motorizacao = :motorizacao ");
             parametros.put(cont++, pesquisaCarroDTO.getMotorizacao());
         }
 
         if(pesquisaCarroDTO.getLugares() != null){
             sql.append(" AND")
-               .append(" LUGARES = ? ");
+               .append(" lugares = :lugares ");
             parametros.put(cont++, pesquisaCarroDTO.getLugares());
         }
 
         if(!pesquisaCarroDTO.getEmprestado().equals(null)){
             sql.append(" AND")
-               .append(" EMPRESTADO = ? ");
+               .append(" emprestado = :emprestado ");
             parametros.put(cont++, pesquisaCarroDTO.getEmprestado());
         }
 
         if(!pesquisaCarroDTO.getTipoCarro().equals(null)){
             sql.append(" AND")
-               .append(" TIPO_CARRO = ? ");
+               .append(" tipoCarro = :tipoCarro ");
             parametros.put(cont++, pesquisaCarroDTO.getTipoCarro());
         }
 
@@ -124,19 +126,18 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
 
         if(pesquisaCarroDTO.getValorInicial() != null && pesquisaCarroDTO.getValorFinal() != null){
             sql.append(" AND")
-               .append(" VALOR BETWEEN ? AND ? ");
+               .append(" valor BETWEEN :inicial AND :fim ");
             parametros.put(cont++, pesquisaCarroDTO.getValorInicial());
             parametros.put(cont++, pesquisaCarroDTO.getValorFinal());
         }else if (pesquisaCarroDTO.getValorInicial() != null && pesquisaCarroDTO.getValorFinal() == null){
             BigDecimal valor = new BigDecimal(0);
             sql.append(" AND")
-                    .append(" VALOR >= ? ");
+                    .append(" VALOR >= :inicial ");
             parametros.put(cont++, pesquisaCarroDTO.getValorInicial());
             parametros.put(cont++, valor);
         }else if (pesquisaCarroDTO.getValorInicial() == null && pesquisaCarroDTO.getValorFinal() != null) {
-            BigDecimal valor = new BigDecimal(0);
             sql.append(" AND")
-                    .append(" VALOR <=  ? ");
+                    .append(" VALOR <=  :fim ");
             parametros.put(cont++, pesquisaCarroDTO.getValorFinal());
         }
 
@@ -145,7 +146,10 @@ public class CarroRepositoryImpl implements CarroRepositoryCustom {
             query.setParameter(i, parametros.get(i));
         }
 
-        List<Carro> carros = query.getResultList();
+		List<Carro> carros = query.getResultList();
+        if(CollectionUtils.isEmpty(carros)) {
+        	return null;
+        }
         
         return carros;
         

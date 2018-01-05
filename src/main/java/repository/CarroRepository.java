@@ -1,6 +1,8 @@
 package repository;
 
 import entity.Carro;
+import enums.FlagAtivo;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import repositoryCustom.CarroRepositoryCustom;
 
@@ -15,5 +17,6 @@ public interface CarroRepository extends JpaRepository<Carro, Long>, CarroReposi
     Carro findByPlaca(String placa);
     List<Carro> findByIdCliente(Long idCliente);
     Carro findByIdClienteAndIdPedido(Long idCliente, Long idPedido);
+    Carro findByIdAndAtivo(Long id, FlagAtivo ativo);
 
 }
