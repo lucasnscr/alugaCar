@@ -11,7 +11,7 @@ import service.AdministradorService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admiinistrador")
+@RequestMapping("/administrador")
 public class AdministradorResource {
 
     @Autowired

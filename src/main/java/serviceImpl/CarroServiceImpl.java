@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import MensagensErro.MensagemErro;
+import repository.CarroMongoRepository;
 import repository.CarroRepository;
 import service.CarroService;
 
@@ -24,6 +25,9 @@ public class CarroServiceImpl implements CarroService {
 
 	@Autowired
 	private CarroRepository carroRepository;
+	
+	@Autowired
+	private CarroMongoRepository carroMongoRepository;
 
 	@Override
 	public CarroDTO insert(CarroDTO carroDTO) throws ValidacaoException, ServicoException {
@@ -67,6 +71,7 @@ public class CarroServiceImpl implements CarroService {
 			Carro carro = carroRepository.findById(id);
 			if (carro != null) {
 				carro.setAtivo(FlagAtivo.INATIVO);
+				carroMongoRepository.updateCarro(carro.getId());
 				carro = carroRepository.save(carro);
 			}
 			BeanUtils.copyProperties(carro, carroDTO);

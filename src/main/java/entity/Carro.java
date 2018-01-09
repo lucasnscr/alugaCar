@@ -7,12 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Document(collection="carro")
 @Entity
 public class Carro {
 
+	@Indexed(unique=true)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

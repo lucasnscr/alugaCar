@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import MensagensErro.MensagemErro;
 import repository.CarroRepository;
+import repository.PedidoMongoRepository;
 import repository.PedidoRepository;
 import service.PedidoService;
 
@@ -29,6 +30,9 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+    
+    @Autowired
+    private PedidoMongoRepository pedidoMongoRepository;
 
     @Autowired
     private CarroRepository carroRepository;
@@ -37,9 +41,7 @@ public class PedidoServiceImpl implements PedidoService {
     public PedidoDTO insert(PedidoDTO pedidoDTO) throws ValidacaoException, ServicoException {
         Pedido pedido =  null;
         try{
-            if(pedidoDTO != null){
-                BeanUtils.copyProperties(pedidoDTO, pedido);
-            }
+            BeanUtils.copyProperties(pedidoDTO, pedido);
             Boolean carroDisponivel = carroDisponivel(pedidoDTO.getIdCarro(), pedidoDTO.getDataInicioEmprestimo(), pedidoDTO.getDataFimEmprestimo());
             if(carroDisponivel){
                 pedido = pedidoRepository.save(pedido);
@@ -58,6 +60,7 @@ public class PedidoServiceImpl implements PedidoService {
             Pedido pedido = pedidoRepository.findByIdAndAtivo(id, FlagAtivo.ATIVO);
             if(pedido != null){
                 pedido.setAtivo(FlagAtivo.INATIVO);
+                pedidoMongoRepository.updatePedido(pedido.getId());
                 pedidoRepository.save(pedido);
                 Long idPedidoInativado = pedido.getId();
                 BeanUtils.copyProperties(pedidoDTO, pedido);
