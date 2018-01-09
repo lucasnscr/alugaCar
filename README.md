@@ -1,3 +1,5 @@
 # alugaCar
 
-Sistema inteligente para aluguel de carros, utilizando Java8, SpringBoot, SpringCloud, SpringData, JPA, Hibernate, MySQL, Rest e Git
+Sistema inteligente para aluguel de carros.
+
+Tecnologias Back-End: Java8, SpringBoot, SpringCloud, SpringData, JPA, Hibernate, MySQL, MongoDB e Rest.
