@@ -1,4 +1,4 @@
-# alugaCar
+# AlugaCar
 
 Sistema inteligente para aluguel de carros.
 
